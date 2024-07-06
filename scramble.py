@@ -152,23 +152,23 @@ def display_game_modes_screen():
 
 def start_standard_game():
     words = fetch_words(15)
-    for word in words:
-        print(word)
-    print('---------------------------------')
+    # for word in words:
+    #     print(word)
+    # print('---------------------------------')
     play_game(words)
 
 def start_timed_game():
     words = fetch_words(30)
-    for word in words:
-        print(word)
-    print('---------------------------------')
+    # for word in words:
+    #     print(word)
+    # print('---------------------------------')
     play_timed_game(words)
 
 def start_ultimate_game():
     words = fetch_words(45)
-    for word in words:
-        print(word)
-    print('---------------------------------')
+    # for word in words:
+    #     print(word)
+    # print('---------------------------------')
     play_ultimate_game(words)
 
 def play_game(words):
@@ -544,9 +544,6 @@ def wait_for_click(callback):
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 callback()
-
-# def main():
-#     play()  
 
 if __name__ == "__main__":
     play()

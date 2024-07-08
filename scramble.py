@@ -4,7 +4,7 @@ import requests
 import time
 import sqlite3
 import random
-
+from wonderwords import RandomWord
 pygame.init()
 
 screen_width, screen_height = 800, 600
@@ -44,11 +44,17 @@ c.execute('''CREATE TABLE IF NOT EXISTS ultimate_scores
               words_typed INTEGER)''')
 conn.commit()
 
-# Random Word API
+# Random Word API (replaced with wonderwords library)
 def fetch_words(num_words):
-    url = f"https://random-word-api.herokuapp.com/word?number={num_words}"
-    response = requests.get(url)
-    return response.json()
+    r = RandomWord()
+    response = r.random_words(num_words, word_min_length=4, word_max_length=15)
+    filtered_words = [word for word in response if '-' not in word]
+
+    # url = f"https://random-word-api.herokuapp.com/word?number={num_words}"
+    # response = requests.get(url)
+    # return response.json()
+
+    return filtered_words
 
 def shuffle_word(word):
     word = list(word)
